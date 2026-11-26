@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estación de Lectura - Chimaltitán | CECyTEJ #06</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde-bosque: #2D6A4F;
+            --verde-claro: #52B788;
+            --verde-suave: #D8F3DC;
+            --amarillo-suave: #FFF3B0;
+            --amarillo-brillante: #F4A261;
+            --naranja: #E76F51;
+            --naranja-hover: #D65A3B;
+            --fondo-claro: #FAF9F6;
+            --blanco: #FFFFFF;
+            --texto-oscuro: #1B2A23;
+            --texto-gris: #4A5D54;
+            --sombra: 0 10px 25px rgba(45, 106, 79, 0.08);
+            --radio-borde: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--fondo-claro);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--verde-bosque);
+            line-height: 1.25;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navegación */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--verde-bosque);
+            text-decoration: none;
+        }
+
+        .logo span {
+            background: var(--amarillo-suave);
+            padding: 6px 10px;
+            border-radius: 12px;
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-oscuro);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--naranja);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--verde-bosque);
+            cursor: pointer;
+        }
+
+        /* Banner Principal (Hero) */
+        .hero {
+            background: linear-gradient(135deg, var(--verde-suave) 0%, var(--amarillo-suave) 100%);
+            padding: 70px 0 80px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .badge-escuela {
+            display: inline-block;
+            background-color: var(--blanco);
+            color: var(--verde-bosque);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--verde-bosque);
+        }
+
+        .hero h1 span {
+            color: var(--naranja);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--texto-gris);
+            margin-bottom: 30px;
+            max-width: 580px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--naranja);
+            color: var(--blanco);
+            box-shadow: 0 6px 18px rgba(231, 111, 81, 0.35);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--naranja-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--verde-bosque);
+            color: var(--blanco);
+            box-shadow: 0 6px 18px rgba(45, 106, 79, 0.25);
+        }
+
+        .btn-secondary:hover {
+            background-color: #21513B;
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            background-color: var(--blanco);
+            padding: 30px;
+            border-radius: 28px;
+            box-shadow: var(--sombra);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-emoji-box {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero-stats-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .stat-pill {
+            background: var(--fondo-claro);
+            padding: 12px;
+            border-radius: 14px;
+            border: 2px dashed var(--verde-claro);
+        }
+
+        .stat-pill strong {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--naranja);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .stat-pill span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--texto-gris);
+        }
+
+        /* Secciones Generales */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 45px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background-color: var(--amarillo-suave);
+            color: var(--texto-oscuro);
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            color: var(--texto-gris);
+            font-size: 1.05rem;
+        }
+
+        /* Problemática y Solución */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .info-card {
+            background: var(--blanco);
+            padding: 32px 26px;
+            border-radius: var(--radio-borde);
+            box-shadow: var(--sombra);
+            border-top: 6px solid var(--verde-claro);
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card.problema {
+            border-top-color: var(--naranja);
+        }
+
+        .info-card.solucion {
+            border-top-color: var(--verde-bosque);
+        }
+
+        .info-card.aporte {
+            border-top-color: var(--amarillo-brillante);
+        }
+
+        .icon-circle {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+            background-color: var(--verde-suave);
+        }
+
+        .problema .icon-circle { background-color: #FDE2DC; }
+        .aporte .icon-circle { background-color: var(--amarillo-suave); }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            color: var(--texto-gris);
+            font-size: 0.98rem;
+        }
+
+        /* Catálogo Digital */
+        .catalogo-section {
+            background-color: #F1F7F4;
+            border-radius: 36px;
+            padding: 65px 30px;
+        }
+
+        .banner-40-libros {
+            background: linear-gradient(90deg, var(--verde-bosque), var(--verde-claro));
+            color: var(--blanco);
+            padding: 18px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 15px rgba(45, 106, 79, 0.2);
+        }
+
+        .controls-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: var(--blanco);
+            padding: 18px;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 18px 12px 42px;
+            border: 2px solid #E0E8E4;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 0.98rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--verde-bosque);
+        }
+
+        .search-box::before {
+            content: "🔍";
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 10px 18px;
+            border-radius: 50px;
+            border: 2px solid var(--verde-suave);
+            background: var(--blanco);
+            color: var(--verde-bosque);
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--verde-bosque);
+            color: var(--blanco);
+            border-color: var(--verde-bosque);
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .book-card {
+            background: var(--blanco);
+            border-radius: var(--radio-borde);
+            padding: 22px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.25s;
+            border: 1px solid #E8F0EC;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .book-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .book-category {
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+
+        .cat-ninos { background-color: #FFF3B0; color: #8A6D00; }
+        .cat-adolescentes { background-color: #FDE2DC; color: #B83B1E; }
+        .cat-adultos { background-color: #D8F3DC; color: #1B4332; }
+
+        .book-icon {
+            font-size: 1.8rem;
+        }
+
+        .book-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            color: var(--texto-oscuro);
+        }
+
+        .book-author {
+            color: var(--texto-gris);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+
+        .badge-disponible {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: #D8F3DC;
+            color: #1B4332;
+            font-weight: 800;
+            font-size: 0.82rem;
+            padding: 7px 12px;
+            border-radius: 10px;
+            width: fit-content;
+        }
+
+        .badge-disponible::before {
+            content: "●";
+            color: #2D6A4F;
+            font-size: 0.9rem;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            background: var(--blanco);
+            border-radius: 16px;
+            color: var(--texto-gris);
+            font-weight: 700;
+        }
+
+        /* Reglas de Uso */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .rule-card {
+            background: var(--blanco);
+            padding: 28px 22px;
+            border-radius: var(--radio-borde);
+            text-align: center;
+            box-shadow: var(--sombra);
+            position: relative;
+        }
+
+        .rule-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--naranja);
+            color: var(--blanco);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .rule-icon {
+            font-size: 2.8rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .rule-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .rule-card p {
+            font-size: 0.93rem;
+            color: var(--texto-gris);
+        }
+
+        /* Ubicación y Donaciones */
+        .ubicacion-donacion-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            align-items: stretch;
+        }
+
+        .box-panel {
+            background: var(--blanco);
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: var(--sombra);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box-panel h3 {
+            font-size: 1.55rem;
+            margin-bottom: 14px;
+        }
+
+        .ubicacion-detalles {
+            list-style: none;
+            margin: 18px 0;
+        }
+
+        .ubicacion-detalles li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--texto-gris);
+            font-weight: 600;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #E8F5E9 0%, #FFF8E1 100%);
+            border: 3px dashed var(--verde-claro);
+            border-radius: 18px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        .map-placeholder span {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+        }
+
+        /* Contadores Meta */
+        .counters-bar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: var(--amarillo-suave);
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 22px;
+        }
+
+        .counter-item {
+            background: var(--blanco);
+            padding: 14px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .counter-item .num {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--verde-bosque);
+            display: block;
+        }
+
+        .counter-item .goal {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--naranja);
+        }
+
+        .progress-bg {
+            background: #E5ECE8;
+            height: 8px;
+            border-radius: 10px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--verde-claro);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        /* Formulario */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #DCE5E0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--naranja);
+        }
+
+        .mensaje-gracias {
+            display: none;
+            background-color: var(--verde-suave);
+            color: var(--verde-bosque);
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            margin-top: 16px;
+            border-left: 5px solid var(--verde-bosque);
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Equipo y Metodología Ágil */
+        .agil-banner {
+            background: var(--blanco);
+            padding: 25px 30px;
+            border-radius: 20px;
+            box-shadow: var(--sombra);
+            margin-bottom: 35px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px;
+            border-bottom: 5px solid var(--amarillo-brillante);
+        }
+
+        .agil-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            color: var(--verde-bosque);
+            background: var(--fondo-claro);
+            padding: 10px 18px;
+            border-radius: 50px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .team-card {
+            background: var(--blanco);
+            padding: 26px;
+            border-radius: var(--radio-borde);
+            box-shadow: var(--sombra);
+            border-left: 6px solid var(--verde-claro);
+        }
+
+        .team-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--amarillo-suave);
+            color: var(--verde-bosque);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .team-card h3 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .team-role-tag {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--naranja);
+            text-transform: uppercase;
+        }
+
+        .team-card p {
+            color: var(--texto-gris);
+            font-size: 0.94rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--verde-bosque);
+            color: var(--blanco);
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 960px) {
+            .hero-grid, .ubicacion-donacion-grid {
+                grid-template-columns: 1fr;
+            }
+            .problem-grid, .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .rules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                background: var(--blanco);
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .problem-grid, .rules-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .catalogo-section {
+                padding: 45px 18px;
+            }
+            .hero {
+                padding: 45px 0 55px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Navegación -->
+    <header>
+        <div class="container nav-container">
+            <a href="#inicio" class="logo">
+                <span>📚</span> Estación de Lectura
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#problematica">El Proyecto</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#reglas">Reglas</a></li>
+                <li><a href="#ubicacion-donar">Ubicación y Donar</a></li>
+                <li><a href="#equipo">Nuestro Equipo</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 1. Inicio (Banner Principal) -->
+    <section id="inicio" class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="badge-escuela">🌱 CECyTEJ Plantel #06 • Aula Externa Chimaltitán</div>
+                <h1>Estación de Lectura: <span>Lee, Comparte y Disfruta</span> en Chimaltitán</h1>
+                <p>Un rincón gratuito lleno de historias en la Unidad Deportiva de Chimaltitán. Toma un libro, léelo bajo los árboles del parque o llévatelo a casa, y comparte el gusto por leer con toda nuestra comunidad.</p>
+                <div class="hero-buttons">
+                    <a href="#catalogo" class="btn btn-primary">📖 Ver Catálogo de Libros</a>
+                    <a href="#ubicacion-donar" class="btn btn-secondary">📍 Ubicar el Buzón en el Parque</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <span class="hero-emoji-box">🌳📚☀️</span>
+                <h3>¡Lectura libre para todas las edades!</h3>
+                <p style="font-size: 0.95rem; color: var(--texto-gris); margin-top: 6px;">Niños, jóvenes y adultos mayores bienvenidos.</p>
+                <div class="hero-stats-mini">
+                    <div class="stat-pill">
+                        <strong>+40</strong>
+                        <span>Libros listos</span>
+                    </div>
+                    <div class="stat-pill">
+                        <strong>100%</strong>
+                        <span>Gratis y comunitario</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ¿Cuál es el problema y cómo lo resolvemos? -->
+    <section id="problematica">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestra Misión</span>
+                <h2>¿Cuál es el problema y cómo lo resolvemos?</h2>
+                <p>Queremos transformar un espacio que todos conocemos en un punto de encuentro cultural y ecológico para nuestro pueblo.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="info-card problema">
+                    <div class="icon-circle">🤔</div>
+                    <h3>El Problema en Chimaltitán</h3>
+                    <p>En Chimaltitán hacen falta espacios gratuitos y accesibles para leer, además de que comprar libros nuevos suele ser caro para muchas familias. También notamos que la Unidad Deportiva se usa casi puro para hacer deporte, pero tiene todo el potencial para ser un espacio cultural donde convivir.</p>
+                </div>
+
+                <div class="info-card solucion">
+                    <div class="icon-circle">💡</div>
+                    <h3>Nuestra Solución</h3>
+                    <p>Instalamos un buzón / stand físico de libros hecho con materiales reciclados en la Unidad Deportiva de Chimaltitán, y creamos esta página web para que todos puedan revisar qué títulos hay disponibles sin tener que ir hasta allá a adivinar, conocer las reglas y animarse a donar o intercambiar.</p>
+                </div>
+
+                <div class="info-card aporte">
+                    <div class="icon-circle">♻️</div>
+                    <h3>Lo que Aportamos como Estudiantes</h3>
+                    <p>Conectamos lo que aprendemos en las aulas del CECyTEJ con las necesidades reales de nuestra comunidad, cuidamos el medio ambiente reutilizando materiales para construir el buzón y fomentamos el hábito de la lectura para niños, jóvenes y adultos mayores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Catálogo Digital de Libros -->
+    <section id="catalogo">
+        <div class="container catalogo-section">
+            <div class="section-header" style="margin-bottom: 25px;">
+                <span class="section-tag">Bookcrossing Comunitario</span>
+                <h2>Catálogo Digital de Libros</h2>
+                <p>Explora algunos de los títulos que te esperan en el parque. Puedes buscar por nombre o filtrar según tu edad.</p>
+            </div>
+
+            <div class="banner-40-libros">
+                🎉 ¡Ya contamos con más de 40 libros donados por alumnos, profesores del CECyTEJ y nuestro equipo!
+            </div>
+
+            <div class="controls-bar">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar por título o autor...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="Todos">Todos</button>
+                    <button class="filter-btn" data-category="Niños">Niños</button>
+                    <button class="filter-btn" data-category="Adolescentes">Adolescentes</button>
+                    <button class="filter-btn" data-category="Adultos Mayores">Adultos Mayores</button>
+                </div>
+            </div>
+
+            <div class="books-grid" id="booksGrid">
+                <!-- Las tarjetas se generan dinámicamente desde JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Reglas de Uso del Buzón -->
+    <section id="reglas">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Fácil y de Confianza</span>
+                <h2>Reglas de Uso del Buzón</h2>
+                <p>Este espacio es de todos. Sigue estos 4 sencillos pasos para que la Estación de Lectura siga funcionando por mucho tiempo.</p>
+            </div>
+
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-number">1</div>
+                    <span class="rule-icon">👀</span>
+                    <h3>Elige un libro</h3>
+                    <p>Toma el que más te llame la atención según tu edad o gustos.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">2</div>
+                    <span class="rule-icon">🌳</span>
+                    <h3>Léelo donde quieras</h3>
+                    <p>Disfrútalo ahí mismo en el parque o llévatelo a tu casa con toda confianza.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">3</div>
+                    <span class="rule-icon">🔄</span>
+                    <h3>Regrésalo o intercámbialo</h3>
+                    <p>Cuando termines, devuélvelo al buzón o deja otro libro en buen estado para que alguien más lo lea.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">4</div>
+                    <span class="rule-icon">🚪</span>
+                    <h3>Cuida nuestro stand</h3>
+                    <p>Cierra bien la puertita del buzón para que los libros no se maltraten ni se mojen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Ubicación y Registro de Donaciones -->
+    <section id="ubicacion-donar">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Visítanos y Participa</span>
+                <h2>Ubicación y Registro de Donaciones</h2>
+                <p>Encuentra nuestro buzón en el parque y ayúdanos a alcanzar nuestra meta comunitaria.</p>
+            </div>
+
+            <div class="ubicacion-donacion-grid">
+                <!-- Columna Ubicación -->
+                <div class="box-panel">
+                    <div>
+                        <h3>📍 ¿Dónde estamos?</h3>
+                        <p style="color: var(--texto-gris);">Nuestro stand reciclado está listo para recibirte todos los días en un punto cómodo y seguro del parque:</p>
+                        <ul class="ubicacion-detalles">
+                            <li><span>🏟️</span> <div><strong>Lugar:</strong> Unidad Deportiva de Chimaltitán, Jalisco.</div></li>
+                            <li><span>🌲</span> <div><strong>Referencia:</strong> A un costado de las canchas principales y cerca de las bancas con sombra de árboles, ideal para sentarse a leer después de jugar.</div></li>
+                            <li><span>🕒</span> <div><strong>Horario:</strong> Abierto las 24 horas (recuerda siempre cerrar bien la puertita del buzón).</div></li>
+                        </ul>
+                    </div>
+
+                    <!-- Recuadro listo para insertar iframe de Google Maps -->
+                    <div class="map-placeholder">
+                        <span>🗺️</span>
+                        <strong>Mapa de la Unidad Deportiva de Chimaltitán</strong>
+                        <p style="font-size: 0.88rem; color: var(--texto-gris); max-width: 340px; margin-top: 5px;">
+                            Espacio listo para insertar el mapa interactivo de Google Maps de la Unidad Deportiva de Chimaltitán.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Columna Donaciones y Contadores -->
+                <div class="box-panel">
+                    <div>
+                        <h3>🎁 Quiero donar un libro</h3>
+                        <p style="color: var(--texto-gris); margin-bottom: 16px;">¿Tienes un libro en buen estado que ya leíste? Regístralo aquí antes de llevarlo al buzón y súmate a nuestra meta.</p>
+
+                        <!-- Contadores Interactivos -->
+                        <div class="counters-bar">
+                            <div class="counter-item">
+                                <span class="num" id="visitasCount">42</span>
+                                <span class="goal">Visitas (Meta: 100)</span>
+                                <div class="progress-bg">
+                                    <div class="progress-fill" id="visitasBar" style="width: 42%;"></div>
+                                </div>
+                            </div>
+                            <div class="counter-item">
+                                <span class="num" id="donacionesCount">12</span>
+                                <span class="goal">Donaciones nuevas (Meta: 30)</span>
+                                <div class="progress-bg">
+                                    <div class="progress-fill" id="donacionesBar" style="width: 40%; background-color: var(--naranja);"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="donacionForm">
+                            <div class="form-group">
+                                <label for="donanteNombre">Tu Nombre:</label>
+                                <input type="text" id="donanteNombre" placeholder="Ej. María González" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="libroTitulo">Título del libro que vas a donar:</label>
+                                <input type="text" id="libroTitulo" placeholder="Ej. El Principito" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="libroCategoria">¿Para qué edad es ideal?</label>
+                                <select id="libroCategoria" required>
+                                    <option value="Niños">Niño / Niña</option>
+                                    <option value="Adolescentes">Adolescente</option>
+                                    <option value="Adultos Mayores">Adulto Mayor</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                                ❤️ Registrar mi Donación
+                            </button>
+                        </form>
+
+                        <div class="mensaje-gracias" id="mensajeGracias"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Nuestro Equipo y Metodología Ágil -->
+    <section id="equipo" style="background-color: #F4F7F5;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Trabajo Colaborativo</span>
+                <h2>Nuestro Equipo y Cómo nos Organizamos</h2>
+                <p>Somos un equipo de 6 estudiantes del <strong>CECyTEJ Plantel #06 (Aula Externa Chimaltitán)</strong>. Nos organizamos usando metodologías ágiles para repartir el trabajo de forma justa y lograr este proyecto comunitario.</p>
+            </div>
+
+            <div class="agil-banner">
+                <div class="agil-pill">📋 Tablero Trello</div>
+                <div class="agil-pill">🎯 Objetivo SMART</div>
+                <div class="agil-pill">🗺️ Hoja de Ruta Ágil</div>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="avatar">R</div>
+                        <div>
+                            <h3>Romina</h3>
+                            <span class="team-role-tag">Objetivo SMART y Construcción</span>
+                        </div>
+                    </div>
+                    <p>Hizo el Objetivo SMART con datos del equipo, ayudó a llevar materiales y a armar y decorar el buzón.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="avatar">A</div>
+                        <div>
+                            <h3>Abril</h3>
+                            <span class="team-role-tag">Colecta y Armado</span>
+                        </div>
+                    </div>
+                    <p>Aportó datos para el SMART, llevó materiales, ayudó a construir el buzón y organizó la colecta de libros.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="avatar">M</div>
+                        <div>
+                            <h3>Marcos</h3>
+                            <span class="team-role-tag">Planeación y Estructura Web</span>
+                        </div>
+                    </div>
+                    <p>Llevó materiales para el buzón y diseñó toda la planeación y estructura de esta página web.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="avatar">J</div>
+                        <div>
+                            <h3>José</h3>
+                            <span class="team-role-tag">Contenidos y Prompts</span>
+                        </div>
+                    </div>
+                    <p>Ayudó a recolectar libros, redactó los prompts y reunió toda la información para la web.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="avatar">A</div>
+                        <div>
+                            <h3>Alexis</h3>
+                            <span class="team-role-tag">Programación</span>
+                        </div>
+                    </div>
+                    <p>Ejecutó y programó la página web usando Inteligencia Artificial.</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-header">
+                        <div class="avatar">L</div>
+                        <div>
+                            <h3>Leti (Leticia)</h3>
+                            <span class="team-role-tag">Hoja de Ruta y Trello</span>
+                        </div>
+                    </div>
+                    <p>Hizo la Hoja de Ruta con los datos de Romina, llevó materiales básicos para el buzón, organizó el tablero Trello y apoyó en los contenidos y catálogo de la web.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Pie de página (Footer) -->
+    <footer>
+        <div class="container">
+            <p>Proyecto Escolar Comunitario - CECyTEJ Plantel #06, Aula Externa Chimaltitán | Desarrollado con Metodologías Ágiles</p>
+        </div>
+    </footer>
+
+    <script>
+        // =========================================================================
+        // ARREGLO DE LIBROS DEL CATÁLOGO
+        // Puedes editar, quitar o agregar libros fácilmente modificando esta lista.
+        // Categorías válidas: "Niños", "Adolescentes", "Adultos Mayores"
+        // =========================================================================
+        const catalogoLibros = [
+            {
+                titulo: "El Principito",
+                autor: "Antoine de Saint-Exupéry",
+                categoria: "Niños",
+                icono: "👑"
+            },
+            {
+                titulo: "Cuentos de la Selva",
+                autor: "Horacio Quiroga",
+                categoria: "Niños",
+                icono: "🐆"
+            },
+            {
+                titulo: "Fábulas de Esopo",
+                autor: "Esopo (Edición Ilustrada)",
+                categoria: "Niños",
+                icono: "🦊"
+            },
+            {
+                titulo: "Charlie y la Fábrica de Chocolate",
+                autor: "Roald Dahl",
+                categoria: "Niños",
+                icono: "🍫"
+            },
+            {
+                titulo: "Los Juegos del Hambre",
+                autor: "Suzanne Collins",
+                categoria: "Adolescentes",
+                icono: "🏹"
+            },
+            {
+                titulo: "Aura",
+                autor: "Carlos Fuentes",
+                categoria: "Adolescentes",
+                icono: "🕯️"
+            },
+            {
+                titulo: "Las Batallas en el Desierto",
+                autor: "José Emilio Pacheco",
+                categoria: "Adolescentes",
+                icono: "🏙️"
+            },
+            {
+                titulo: "Harry Potter y la Piedra Filosofal",
+                autor: "J.K. Rowling",
+                categoria: "Adolescentes",
+                icono: "⚡"
+            },
+            {
+                titulo: "Pedro Páramo",
+                autor: "Juan Rulfo",
+                categoria: "Adultos Mayores",
+                icono: "🌵"
+            },
+            {
+                titulo: "El Llano en Llamas",
+                autor: "Juan Rulfo",
+                categoria: "Adultos Mayores",
+                icono: "🌾"
+            },
+            {
+                titulo: "Cien Años de Soledad",
+                autor: "Gabriel García Márquez",
+                categoria: "Adultos Mayores",
+                icono: "🦋"
+            },
+            {
+                titulo: "Leyendas y Tradiciones de Jalisco",
+                autor: "Recopilación Cultural",
+                categoria: "Adultos Mayores",
+                icono: "📜"
+            }
+        ];
+
+        // Variables de estado para filtros y contadores
+        let categoriaActual = "Todos";
+        let textoBusqueda = "";
+        let visitas = 42;
+        let donaciones = 12;
+
+        // Elementos del DOM
+        const booksGrid = document.getElementById("booksGrid");
+        const searchInput = document.getElementById("searchInput");
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const donacionForm = document.getElementById("donacionForm");
+        const mensajeGracias = document.getElementById("mensajeGracias");
+        const visitasCount = document.getElementById("visitasCount");
+        const donacionesCount = document.getElementById("donacionesCount");
+        const visitasBar = document.getElementById("visitasBar");
+        const donacionesBar = document.getElementById("donacionesBar");
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        // Menú móvil
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("show");
+            });
+        });
+
+        // Obtener clase CSS según categoría
+        function obtenerClaseCategoria(cat) {
+            if (cat === "Niños") return "cat-ninos";
+            if (cat === "Adolescentes") return "cat-adolescentes";
+            return "cat-adultos";
+        }
+
+        // Renderizar tarjetas de libros
+        function mostrarLibros() {
+            booksGrid.innerHTML = "";
+
+            const librosFiltrados = catalogoLibros.filter(libro => {
+                const coincideCategoria = categoriaActual === "Todos" || libro.categoria === categoriaActual;
+                const coincideTexto = libro.titulo.toLowerCase().includes(textoBusqueda.toLowerCase()) ||
+                                      libro.autor.toLowerCase().includes(textoBusqueda.toLowerCase());
+                return coincideCategoria && coincideTexto;
+            });
+
+            if (librosFiltrados.length === 0) {
+                booksGrid.innerHTML = `
+                    <div class="no-results">
+                        😕 No encontramos libros con ese nombre o filtro. ¡Intenta con otra búsqueda o anímate a donar uno!
+                    </div>
+                `;
+                return;
+            }
+
+            librosFiltrados.forEach(libro => {
+                const card = document.createElement("div");
+                card.className = "book-card";
+                card.innerHTML = `
+                    <div>
+                        <div class="book-top">
+                            <span class="book-category ${obtenerClaseCategoria(libro.categoria)}">${libro.categoria}</span>
+                            <span class="book-icon">${libro.icono}</span>
+                        </div>
+                        <h3>${libro.titulo}</h3>
+                        <p class="book-author">Por: ${libro.autor}</p>
+                    </div>
+                    <div class="badge-disponible">Disponible en el buzón</div>
+                `;
+                booksGrid.appendChild(card);
+            });
+        }
+
+        // Eventos de búsqueda y filtrado
+        searchInput.addEventListener("input", (e) => {
+            textoBusqueda = e.target.value;
+            mostrarLibros();
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                filterBtns.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                categoriaActual = btn.getAttribute("data-category");
+                mostrarLibros();
+            });
+        });
+
+        // Actualizar barras de progreso y contadores
+        function actualizarContadores() {
+            visitasCount.textContent = visitas;
+            donacionesCount.textContent = donaciones;
+
+            const porcentajeVisitas = Math.min((visitas / 100) * 100, 100);
+            const porcentajeDonaciones = Math.min((donaciones / 30) * 100, 100);
+
+            visitasBar.style.width = porcentajeVisitas + "%";
+            donacionesBar.style.width = porcentajeDonaciones + "%";
+        }
+
+        // Manejo del formulario de donación
+        donacionForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const nombre = document.getElementById("donanteNombre").value.trim();
+            const titulo = document.getElementById("libroTitulo").value.trim();
+            const categoria = document.getElementById("libroCategoria").value;
+
+            if (!nombre || !titulo) return;
+
+            // Sumar a contadores interactivos
+            donaciones += 1;
+            visitas += 1;
+            actualizarContadores();
+
+            // Agregar también el libro recién registrado al catálogo visual
+            catalogoLibros.unshift({
+                titulo: titulo,
+                autor: "Donado por " + nombre,
+                categoria: categoria,
+                icono: "📗"
+            });
+            mostrarLibros();
+
+            // Mostrar mensaje de agradecimiento
+            mensajeGracias.style.display = "block";
+            mensajeGracias.innerHTML = `
+                🎉 ¡Muchas gracias, <strong>${nombre}</strong>! Tu libro <em>"${titulo}"</em> (${categoria}) quedó registrado y ya aparece en nuestro catálogo. ¡Te esperamos en el buzón de la Unidad Deportiva!
+            `;
+
+            donacionForm.reset();
+        });
+
+        // Simular visita al cargar la página
+        window.addEventListener("DOMContentLoaded", () => {
+            visitas += 1;
+            actualizarContadores();
+            mostrarLibros();
+        });
+    </script>
+</body>
+</html>
